@@ -1,0 +1,15 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'users/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'first_app/styles.css' %}">
+<div class="show">
+    <h1>User {{user.id}}</h1>
+    <div class=showwrapper>
+        <p>Name:</p> {{user.fullname}}
+        <p>Email:</p> {{user.email}}
+        <p>Created at: </p>{{user.created_at}}
+        <a href="/first_app/{{ user.id }}/edit"><button type="button" name="button" class="button1">Edit</button></a> 
+        <a href="/first_app/{{ user.id }}/destroy"><button type="button" name="button" class="button1">Delete</button></a> 
+        <a href="/"><button type="button" name="button" class="button1">Go Back</button></a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/styles.css' %}">
+</head>
+<body>
+    <div class="border">
+        <table class="display">
+            <tr class = "heading">
+                <td class="id">ID</td>
+                <td class="name">Full Name</td>
+                <td class="email">Email</td>
+                <td class="createdat">Created At</td>
+                <td class="actions">Actions</td>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td class="id">{{ user.id }}</td>
+                <td class="name">{{ user.fullname }}</td>
+                <td class="email">{{ user.email }}</td>
+                <td class="createdat">{{ user.created_at }}</td>
+                <td class="col-sm-1">
+                    <a href="/first_app/{{ user.id }}"><button type="button" name="button">Show</button></a>
+                    <a href="/first_app/{{ user.id }}/edit"><button type="button" name="button">Edit</button></a>
+                    <a href="/first_app/{{ user.id }}/destroy"><button type="button" name="button">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        <p><a href="/first_app/new"><button class= "indexbutton" type="button">Add a new user</button></a></p>
+        <!-- <marquee scrollamount="25" behavior="alternate" width='700';><p><a href="/first_app/new"><button class= "indexbutton" type="button">Add a new user</button></a></p></marquee> -->
+    </div>
+</body>
+</html>

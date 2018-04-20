@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/styles.css' %}">
+    <title>Add New User!</title>
+</head>
+<body>  
+    <div class="show">
+            {% if messages %}
+                {% for message in messages%}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        <h1>Edit User {{user.id}}</h1>
+        <form action="/first_app/userupdate" method ="POST" class="editwrapper">
+            {% csrf_token %}
+            <p>Full name:</p>
+            <input type="text" name="name" value = "{{ user.fullname }}">
+
+            <p>Email:</p>
+            <input type="text" name="email" value = {{user.email}}>
+            <input type="hidden" name = 'usersid' value = {{user.id}}>
+            <p><input type="submit" name="update" value = "Update"></p>
+            <a href="/">Go Back</button></a>
+        </form>
+    </div>
+    <!-- <a href="/first_app/{{ user.id }}"><button type="button" name="button">Show</button></a> |  -->
+    
+</body>
+</html>
